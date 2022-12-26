@@ -1,79 +1,115 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Poppins:wght@100;200;300;500&display=swap');
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+/* 
+font-family: 'Berkshire Swash', cursive;
+font-family: 'Nanum Gothic', sans-serif;
+ */
+
+/*==========================================================================
+	reset
+==========================================================================*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+	b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+	details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
+	output, ruby, section, summary, time, mark, audio, video,option {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+	font-size: 1rem;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 200;
+/* 	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box; */
+	-webkit-text-size-adjust: none;
+	line-height: 1.5;
+	word-break: keep-all;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+html,body{
+	width: 100%;
+	height: 100%;
 }
 body {
-	line-height: 1;
+	position: relative;
+	overflow-x: hidden;
 }
-ol, ul, li {
-	list-style: none;
+textarea,
+button,
+input,
+select {
+	border: none;
+	padding: 0;
+	background: none;
 }
-blockquote, q {
-	quotes: none;
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	color: #9e9e9e;
+	font-size: 0.875rem;
+	font-weight: 500;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+::-moz-placeholder { /* Firefox 19+ */
+	color: #9e9e9e;
+	font-size: 0.875rem;
+	font-weight: 500;
 }
-table {
-	border-collapse: initial;
-	border-spacing: 0;
+:-ms-input-placeholder { /* IE 10+ */
+	color: #9e9e9e;
+	font-size: 0.875rem;
+	font-weight: 500;
 }
-
-em {
-	font: normal;
+:-moz-placeholder { /* Firefox 18- */
+	color: #9e9e9e;
+	font-size: 0.875rem;
+	font-weight: 500;
 }
-
+img {
+	transform: translateZ(0);
+}
 a {
+	font-size: inherit;
+	display: block;
+	text-decoration: none;
+	background: transparent;
+	-webkit-tap-highlight-color: inherit;
+	color: inherit;
+}
+a:hover {
+	text-decoration: none;
+	color: inherit;
+}
+a:focus,
+a:active {
+    border-radius: 4px;
+}
+em, i, b, strong, dd, dt {
+	font-style: normal;
 	text-decoration: none;
 }
-
-img {
-	display: block;
+li, ol, ul {
+	list-style: none;
 }
-
-.clear_fix:before,
-.clear_fix:after {
-    display: block;
-    content: '';
-    line-height: 0;
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
-.clear_fix:after {
-    clear: both;
+iframe {
+	min-height: 100%;
+	min-width: 100%;
 }
-
-.ir_so {
-	overflow:hidden;
+textarea {
+	resize: none;
+}
+select {
+	outline: black;
+}
+.ir-so {
 	position: absolute;
 	width: 0;
-	height:0;
+	height: 0;
 	line-height: 0;
 	text-indent: -9999px;
+	overflow: hidden;
 }
