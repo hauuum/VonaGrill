@@ -8,14 +8,18 @@
     <meta name="description" content="포트폴리오, portfolio, publisher" />
     <meta
       name="keywords"
-      content="dinner, restrant, portfolio, publisher, hauuumi, 하유미, 퍼블리셔, 포트폴리오"
+      content="dinner, restraunt, portfolio, publisher, hauuumi, 하유미, 퍼블리셔, 포트폴리오"
     />
     <title>Will make your awesome dinner!</title>
 
     <!-- STYLE -->
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     />
     <link
       rel="stylesheet"
@@ -93,52 +97,30 @@
       sizes="16x16"
       href="icon/favicon-16x16.png"
     />
-
-    <!--  Script  -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz6hlsQ1TWaKlQmFDsB2bDPFNkrvHQ0i0&callback=initMap"></script>
-    <script>
-      function initMap() {
-        var uluru = { lat: 43.424533, lng: 6.766599 };
-        var imgurl = "img/map.png";
-
-        //첫번째 지도 id map
-        var map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 17,
-          center: uluru,
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
-          icon: imgurl,
-        });
-      }
-    </script> -->
-    <script src="js/index.js"></script>
   </head>
   <body>
     <main>
-      <!-- Section1 -->
-      <section id="section1" class="section">
+      <!-- section2 home -->
+      <section id="home" class="section">
         <div class="home-bg-wrap">
-          <img src="./img/home_bg1.jpg" alt="bg" />
-          <img src="./img/home_bg2.png" alt="bg" />
-          <img src="./img/home_bg3.png" alt="bg" />
+          <img src="./img/home_bg1.jpg" alt="bg" / > <img
+          src="./img/home_bg2.png" alt="bg" / class="home-behind">
+          <img src="./img/home_bg3.png" alt="bg" class="home-lamp" />
         </div>
         <div class="home-txt">
           <div class="home-top">
-            <div class="container">
+            <div class="container-xxl">
               <div class="row">
-                <h1>Vonz Grill</h1>
+                <h1>Vona Grill</h1>
                 <p>Don't expect anything until you experience it !</p>
               </div>
             </div>
           </div>
           <div class="home-btm">
-            <div class="container">
+            <div class="container-xxl">
               <div class="row">
                 <div class="desc">
-                  <p>Discover the <span class="block-yg">Vonz Grill</span></p>
+                  <p>Discover the <span class="block-yg">Vona Grill</span></p>
                   <p>concept, a hip canteen in</p>
                   <p><span class="block-y">saint-raphael.</span></p>
                   <p>everything is homemade,</p>
@@ -154,9 +136,10 @@
           >keyboard_double_arrow_down</span
         >
       </section>
-      <section id="section2" class="section">
+      <!-- section2 concept -->
+      <section id="concept" class="section">
         <div class="bg-wrap">
-          <div class="container">
+          <div class="container-xxl">
             <div class="row">
               <h2 class="title">Some Tasty...!</h2>
               <div class="imgs">
@@ -170,7 +153,7 @@
           </div>
         </div>
         <div class="bg-wrap">
-          <div class="container">
+          <div class="container-xxl">
             <div class="row">
               <h2 class="title">Make yourself home!</h2>
               <div class="imgs">
@@ -184,7 +167,7 @@
           </div>
         </div>
         <div class="bg-wrap">
-          <div class="container">
+          <div class="container-xxl">
             <div class="row">
               <h2 class="title">Do as you wish!</h2>
               <div class="imgs">
@@ -201,13 +184,14 @@
           </div>
         </div>
       </section>
-      <section id="section3" class="section">
+      <!-- section3 location -->
+      <section id="location" class="section">
         <div class="bg-wrap">
           <img src="./img/wk-bg2.png" alt="lamp image" />
-          <div class="container">
+          <div class="container-xxl">
             <div class="row">
-              <h2 class="title">Walking in</h2>
               <div class="desc">
+                <h2 class="title">Walking in</h2>
                 <p>
                   Step in and feel right at home! <br/ > The different settings
                   were designed to suit your moods.<br/ > A warm welcome and a
@@ -218,8 +202,330 @@
             </div>
           </div>
         </div>
+        <div class="bg-wrap">
+          <div class="container-xxl">
+            <div class="row">
+              <div class="desc">
+                <h2 class="title">THE LIVING ROOM</h2>
+                <p>
+                  The perfect room for after work drinks, a Birthday celebration
+                  or late night libations. Surrounded by quirky pictures and a
+                  myriad of details and vintage objects.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-wrap">
+          <div class="garden-line-bg">
+            <div class="container-xxl">
+              <div class="row">
+                <div class="desc">
+                  <h2 class="title">THE GARDEN</h2>
+                  <p>
+                    Our beautiful backyard is the ultimate lunch spot , for a
+                    get together under our Pomegranate tree or a summer dinner
+                    date by our voluptuous sculpted ladies. Beware: Seating is
+                    limited and reservations are a must! Call us to book a
+                    table.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="umbrella umbrella1">
+            <img src="./img/garden-img1.png" alt="umbrella image" />
+            <!-- <img src="./img/garden-img4.png" alt="umbrella shadow image" /> -->
+          </div>
+          <div class="umbrella umbrella2">
+            <img src="./img/garden-img2.png" alt="umbrella image" />
+            <!-- <img src="./img/garden-img4.png" alt="umbrella shadow image" /> -->
+          </div>
+          <div class="umbrella umbrella3">
+            <img src="./img/garden-img3.png" alt="umbrella image" />
+            <!-- <img src="./img/garden-img4.png" alt="umbrella shadow image" /> -->
+          </div>
+        </div>
+      </section>
+      <!-- section4 menu -->
+      <section id="menu" class="section">
+        <div class="container-xxl">
+          <div class="row">
+            <div class="menu-deco-imgs">
+              <img src="./img/menu-img1.png" alt="basil image" />
+              <img src="./img/menu-img2.png" alt="honey image" />
+              <img src="./img/menu-img12.png" alt="book image" />
+            </div>
+            <div class="menu-txt">
+              <h2 class="title">
+                <span>TAKE</span>
+                <span>A LOOK</span>
+                <span>AT THE</span>
+                <span>MENU</span>
+              </h2>
+            </div>
+            <ul class="menu-wrap">
+              <li>
+                <img src="./img/menu-img3.png" alt="POKE BOWL SAUMON image" />
+                <div class="desc">
+                  <h3>POKE BOWL SAUMON</h3>
+                  <p>
+                    Sushi Rice, Marinated Salmon, Mango, Radish, Cucumber, Red
+                    Cabbage, Red Pepper, Ketone, Sauce (Soy, Sesame Oil, Rice
+                    Vinegar, Ginger, Garlic)
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div class="desc">
+                  <h3>FRESH OVOCADO SUSHIS</h3>
+                  <p>
+                    Japanese sushi with soft-baked ingredients and avocados
+                    sprinkled with fresh chicken breasts and cajun spice on
+                    shrimp.
+                  </p>
+                </div>
+                <img
+                  src="./img/menu-img4.png"
+                  alt="FRESH OVOCADO SUSHIS image"
+                />
+              </li>
+              <li>
+                <img
+                  src="./img/menu-img5.png"
+                  alt="SEASONING POTATO FRIED image"
+                />
+                <div class="desc">
+                  <h3>SEASONING POTATO FRIED</h3>
+                  <p>
+                    French fries topped with tomatoes, pineapples and fried
+                    kalamari mixed with fresh vegetables mixed in the dressing
+                    with a sour, sweet lime sealant.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div class="desc">
+                  <h3>CHAROLIS BAFF TARTARY</h3>
+                  <p>
+                    Beef tartare: Raw prime beef, marinated soy sauce, olive
+                    oil, Worcester sauce, Tabasco, served with black olives,sun
+                    dried tomatoes, parmesan and a side of french fries.
+                  </p>
+                </div>
+                <img
+                  src="./img/menu-img6.png"
+                  alt="CHAROLIS BAFF TARTARY image"
+                />
+              </li>
+              <li>
+                <img
+                  src="./img/menu-img9.png"
+                  alt="The Nordic toasted ham image"
+                />
+                <div class="desc">
+                  <h3>The Nordic toasted ham</h3>
+                  <p>
+                    Serrano ham, herb ham, thinly cut Chorizo, coppa, homemade
+                    country terrine (may vary according to season
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div class="desc">
+                  <h3>CHOCOLATE THUNDER FROM DOWN UNDER</h3>
+                  <p>
+                    a roll cake decorated with fresh Chilean raspberries and
+                    chocolate in a soft whipped cream cake made with gourmet,
+                    strong French vanilla.
+                  </p>
+                </div>
+                <img
+                  src="./img/menu-img7.png"
+                  alt="CHOCOLATE THUNDER FROM DOWN UNDER image"
+                />
+              </li>
+              <li>
+                <img src="./img/menu-img8.png" alt="CHEESE CAKE OLIVIA image" />
+                <div class="desc">
+                  <h3>CHEESE CAKE OLIVIA</h3>
+                  <p>
+                    Italian traditional rollcakes with 30 days of aging and
+                    softer and sweeter Belgiel White chocolate.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- section5 pictures -->
+      <section id="pictures" class="section">
+        <div class="container-xxl">
+          <div class="row">
+            <div class="desc">
+              <h2 class="title">HOMEMADE</h2>
+              <p>
+                All items are homemade, according to our traditional artisanal
+                methods. We even make our own bread rolls!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- section6 line-banner -->
+      <section id="line-banner" class="section">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="./img/slide-img1.jpg" alt="image1" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./img/slide-img2.jpg" alt="image2" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./img/slide-img3.jpg" alt="image3" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./img/slide-img4.jpg" alt="image4" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./img/slide-img5.jpg" alt="image5" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./img/slide-img6.jpg" alt="image6" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./img/slide-img7.jpg" alt="image7" />
+            </div>
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </section>
+      <!-- section7 team -->
+      <section id="team" class="section">
+        <div class="container-xxl">
+          <div class="row">
+            <div class="left">
+              <img src="./img/team-img2.jpg" alt="team image2" />
+              <img src="./img/team-img3.jpg" alt="team image3" />
+            </div>
+            <div class="right">
+              <div class="desc">
+                <h2 class="title">OUR TEAM</h2>
+                <p>
+                  Everybody is at your service to offer the best experience
+                  possible.
+                </p>
+              </div>
+              <img src="./img/team-img1.jpg" alt="team image1" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- section8 event-->
+      <section id="event" class="section">
+        <div class="event-line-bg">
+          <div class="container-xxl">
+            <div class="row">
+              <div class="desc">
+                <div class="title">Vona Grill</div>
+                <p>
+                  Live music and performances, art exhibits, check our event
+                  schedule on Facebook and our private options for unique
+                  experiences.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="imgs">
+          <img src="./img/party-bg2.png" alt="singer image" />
+          <img src="./img/party-bg3.png" alt="wall image" />
+        </div>
+        <img src="./img/party-img.png" alt="mic image" / class="event-mic-img">
+      </section>
+      <!-- section9 notice-->
+      <section id="notice" class="section">
+        <div class="imgs">
+          <img src="./img/notice-img1.png" alt="pumpkin image" />
+          <img src="./img/notice-img2.png" alt="Cherry tomato image" />
+          <img src="./img/notice-img3.png" alt="salary image" />
+          <img src="./img/notice-img4.png" alt="radish image" />
+          <img src="./img/notice-img5.png" alt="garlic image" />
+        </div>
+        <div class="container-xxl">
+          <div class="row">
+            <div class="desc">
+              <h3>OPENING HOURS</h3>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Winter hours</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Sunday to Wednesday</td>
+                    <td>9am - 8:30pm</td>
+                  </tr>
+                  <tr>
+                    <td>Thursday, Friday, Saturday</td>
+                    <td>9am - 0:30pm</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Summer hours - 7/7</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>1rst June > 8th October</td>
+                    <td>9am - 12:30pm</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h3>BOOKING CONTACT</h3>
+              <p>04 94 95 10 19</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="map" class="section">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1240202.0913251804!2d7.392703307326379!3d52.618970010934426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b85cecbc007f53%3A0x138a2e4438b5e65e!2sVona%20Grill!5e0!3m2!1sko!2skr!4v1672296221360!5m2!1sko!2skr"
+          width="100%"
+          height="100%"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
       </section>
     </main>
-    <footer></footer>
+    <footer>
+      <div class="container-xxl">
+        <div class="row">
+          <p>
+            WE WOULD LOVE TO SHARE WITH YOU OUR GOURMET NEWS, OUR EVENTS DATES
+            AND MUCH MORE !
+          </p>
+          <form action="/">
+            <input type="text" placeholder="Enter your email here" />
+            <button>Subscribe</button>
+          </form>
+          <img src="./img/footer.png" alt="thank you" />
+          <div class="copyright">
+            Copyright © hauuumi 2022. all right reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!--  Script  -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>
