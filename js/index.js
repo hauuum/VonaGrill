@@ -1,14 +1,11 @@
-function ready() {
+window.onload = () => {
 
   const home = document.querySelector('#home');
   const concept = document.querySelector('#concept');
+  const location = document.querySelector('#location');
 
 
-  //초기값
-
-
-
-  //mouse event 
+  //home mouse event 
   $('#home').on('mousemove', function (e) {
     let mouseX = e.pageX;
     let mouseY = e.pageY;
@@ -24,12 +21,6 @@ function ready() {
   
   
 
- 
-  
-
-
-
-
 
   // Function //
   // home txt, bg changes by scroll
@@ -41,48 +32,70 @@ function ready() {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         homeTxt.css({ 'background-color': 'rgba(0,0,0,0.8)' });
-        homeH1.css({ 'opacity': 0});
-        homeP.css({ 'opacity': 0});
+        homeH1.css({ 'opacity': 0 });
+        homeP.css({ 'opacity': 0 });
       }
       else {
         homeTxt.css({ 'background-color': 'rgba(0,0,0,0)' });
-        homeH1.css({ 'opacity': 1});
-        homeP.css({ 'opacity': 1});
+        homeH1.css({ 'opacity': 1 });
+        homeP.css({ 'opacity': 1 });
       }
     });
   });
-  const homeBtm = home.querySelector('.home-btm .desc')
+  const homeBtm = home.querySelector('.home-btm .desc');
   homeScrollPrx.observe(homeBtm);
 
 
   // concept imgs animation effect by scroll
-  const conceptScrollPrx = new IntersectionObserver((entries) => { 
-    
-    entries.forEach((entry) => { 
-      console.log(entry.target, entry.intersectionRatio);
-
+  const conceptScrollPrx = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.querySelectorAll('img').forEach((ele, inx) => {
           inx += 1;
 
-         ele.style.opacity = inx * 1;
+          ele.style.opacity = inx * 1;
           ele.style.animationDelay = inx * 0.4 + 's';
           ele.style.animationIterationCount = 'inherit';
           ele.classList.add('active');
         })
-
       }
-      else { 
-         entry.target.querySelectorAll('img').forEach((ele, inx) => {
+      else {
+        entry.target.querySelectorAll('img').forEach((ele) => {
           ele.classList.remove('active');
         })
       }
     })
   })
-  const conceptBg = concept.querySelectorAll('.bg-wrap');
+  const conceptBg = concept.querySelectorAll('.imgs');
   conceptBg.forEach((ele) => {
     conceptScrollPrx.observe(ele);
   });
+
+
+  
+
+
+
+
+  const lampScrollPrx = () => {
+    const lamp = $('.lamp');
+    const bg1 = $('.bg1 .desc');
+    const bgHeight = location.querySelector('.bg1').clientHeight;
+    const lampScrollY = Math.round(location.getBoundingClientRect().y);
+    const total = bgHeight - lampScrollY;
+    
+    lamp.css({
+      'transform': 'translate(-50%, -' + total + 'px)'
+    });
+    
+    if (lampScrollY <= bgHeight - bgHeight/2) { 
+      bg1.css({
+        'opacity': 1 - (lampScrollY/100)
+      })
+    }
+  }
+  
+
   
   
   
@@ -95,12 +108,13 @@ function ready() {
       conceptScrollPrx.observe(ele);
     });
 
-  })
+    lampScrollPrx();
+
+    
+
+  });
 
 
 
-}
+};
 
-
-
-document.addEventListener('DOMContentLoaded', ready)
