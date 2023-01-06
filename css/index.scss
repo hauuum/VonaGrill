@@ -12,11 +12,11 @@ $font20: 1.5rem;
 $font30: 1.875rem;
 $font32: 2rem;
 
-@mixin animation($duration, $name) {
+@mixin animation($duration, $name, $count) {
   animation-duration: $duration;
   animation-name: $name;
   animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
+  animation-iteration-count: $count;
 }
 @mixin keyframe ($animation_name) {
   @keyframes #{$animation_name} {
@@ -167,7 +167,7 @@ $font32: 2rem;
         bottom: 2rem;
       }
     }
-    @include animation(1s, move);
+    @include animation(1s, move, infinite);
   }
 }
 #concept{
@@ -192,7 +192,7 @@ $font32: 2rem;
               transform: translateY(80px);
             }
           }
-          @include animation(.4s, imgMove); 
+          @include animation(.4s, imgMove, inherit); 
         }
       }
     }
@@ -274,6 +274,7 @@ $font32: 2rem;
         top: 0;
         transform: translate(-50%, -50%);
         width: 30%;
+        transition: .4s;
         z-index: 1;
       }
       .row {
@@ -334,7 +335,7 @@ $font32: 2rem;
         .row {
           justify-content: flex-end;
           .desc {
-            width: 40%;
+            width: 48%;
             margin: 0 auto;
             .title {
               color: $apricot;
@@ -344,6 +345,7 @@ $font32: 2rem;
       }
       .umbrella {
         position: absolute;
+        animation-fill-mode: forwards;
         &::before {
           content: '';
           display: block;
@@ -359,22 +361,40 @@ $font32: 2rem;
           width: 100%;
         }
         &.umbrella1{
-          top: 7%;
-          right: 14%;
-          width: 20%;
-          transform: rotate(15deg);
+          width: 14%;
+          transform: translate(320%, 5%) rotate(0deg);
+          &.active {
+            @include keyframe(umbrella1) {
+              100% {
+                transform: translate(502%, 47%) rotate(15deg);
+              }
+            }
+            @include animation(1s, umbrella1, inherit);
+          }  
         }
         &.umbrella2{
-           width: 22%;
-           top: 0;
-           left: 7%;
-           transform: rotate(-8deg);
+           width: 18%;
+           transform: translate(137%, -4%) rotate(0deg);
+           &.active {
+            @include keyframe(umbrella2) {
+              100% {
+                transform: translate(57%, 14%) rotate(-27deg);
+              }
+            }
+            @include animation(1s, umbrella2, inherit);
+          }
         }
         &.umbrella3{
-          top: -10%;
-          left: 52%;
-          width: 24%;
-          transform: rotate(-8deg);
+          width: 20%;
+          transform: translate(178%, -10%) rotate(0deg);
+          &.active {
+            @include keyframe(umbrella3) {
+              100% {
+                transform: translate(314%, -34%) rotate(34deg);
+              }
+            }
+            @include animation(1s, umbrella3, inherit);
+          }
         }
       }
     }
@@ -467,9 +487,14 @@ $font32: 2rem;
       li {
         display: flex;
         align-items: center;
-        justify-content: space-between  ;
+        justify-content: space-between ;
+        opacity: 0;
+        transition: .8s;
         &:not(:last-child){
           margin-bottom: 1.875rem;
+        }
+        &.view {
+          opacity: 1;
         }
         .desc {
           flex: 1;
@@ -513,9 +538,25 @@ $font32: 2rem;
   height: 100vh;
   overflow: hidden;
   img {
-    width: 100%;
     height: 100vh;
     object-fit: cover;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: #fff;
+    padding: 2.5rem 1.25rem;
+    box-sizing: border-box;
+    background: rgba(0,0,0,.5);
+    &::after, 
+    &::before {
+      font-size: 2rem;
+    }
+  }
+  .swiper-button-prev {
+    left: 10%;;
+  }
+  .swiper-button-next {
+    right: 10%;;
   }
 }
 #team {
@@ -531,9 +572,12 @@ $font32: 2rem;
       align-items: flex-end;
       flex: 0.6;
       img {
+        &:first-child {
+          margin-bottom: 1.5rem;
+        }
         &:last-child {
           width: 70%;
-          margin-top: 1.5rem;
+          transition: margin-top 4s;
         }
       }
     }
@@ -591,12 +635,14 @@ $font32: 2rem;
           color: #202020;
           margin-bottom: 0.75rem;
           line-height: 1;
-          text-shadow: -60px 6px 10px rgba(0,0,0,.6);
+          text-shadow: 0 0 0 rgba(0,0,0,0);
+          transition: text-shadow 1s;
         }
         p {
           font-weight: 200;
           color: #202020;
-          text-shadow: -60px 6px 10px rgba(0,0,0,.6);
+          text-shadow: 0 0 0 rgba(0,0,0,0);
+          transition: text-shadow 1s;
         }
       }
     }
@@ -608,14 +654,17 @@ $font32: 2rem;
       position: absolute;
       left: 0;
       bottom: 0;
+      transition: transform .2s;
     }
   }
   .event-mic-img {
     position: absolute;
-    top: -12.5rem;
-    right: 0;
+    top: -10rem;
     width: 12.5rem;
     z-index: 2;
+    right: 0;
+    transform: translateX(0);
+    transition: transform .2s;
   }
 }
 #notice {
@@ -631,7 +680,8 @@ $font32: 2rem;
     top: 0;
     img{
       position: absolute;
-      opacity: .8;
+      opacity: .6;
+      transform: translateY(0);
       &:nth-of-type(1) {
         width: 9%;
         left: 8%;
@@ -714,16 +764,20 @@ footer {
       margin: 2rem auto;
       input {
         width: 20%;
-        color: $white;
-        font-weight: 400;
+        color: #456c6f;
+        font-weight: 600;
+        margin-right: .5rem;
         &:focus {
           outline: none;
+          border-bottom: 2px solid $white;
+          padding: 0.65rem 0;
         }
         &::placeholder {
           font-size: $font18;
           font-weight: 400;
           color: $white;
           opacity: .6;
+          text-align: center;
         }
       }
       button {
