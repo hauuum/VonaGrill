@@ -28,6 +28,62 @@
   text-transform: uppercase;
 }
 
+#nav {
+  position: fixed;
+  right: 2%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+#nav li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 0.25rem;
+}
+#nav li .hidden {
+  display: block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: #9e9e9e;
+  text-indent: -9999px;
+  margin-left: 0.75rem;
+  transform: scale(1);
+  transition: transform 0.1s;
+}
+#nav li .menu-name {
+  position: relative;
+  font-size: 0.875rem;
+  background: #202020;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 0.4em 0.8em;
+  visibility: hidden;
+}
+#nav li .menu-name::before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0px;
+  height: 0px;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 9px solid #202020;
+}
+#nav li.active .hidden {
+  transform: scale(0.7);
+  background: #202020;
+}
+#nav li.active .menu-name {
+  visibility: visible;
+}
+
 #home {
   height: 200vh;
 }
@@ -497,11 +553,12 @@
 }
 #menu .row .menu-wrap li .desc h3 {
   color: #ffe09c;
-  font-size: 1.875rem;
+  font-size: 2rem;
   font-weight: 300;
   margin-bottom: 1.25rem;
 }
 #menu .row .menu-wrap li .desc p {
+  font-size: 1.25rem;
   color: #fff;
   word-break: keep-all;
 }
@@ -510,13 +567,20 @@
 }
 
 #line-banner {
+  position: relative;
   height: 40vh;
   background: url(../img/line-banner.jpg) center center no-repeat;
   background-size: cover;
   background-attachment: fixed;
   z-index: 2;
 }
-#line-banner .desc {
+#line-banner .container-xxl {
+  height: 100%;
+}
+#line-banner .container-xxl .row {
+  height: 100%;
+}
+#line-banner .container-xxl .row .desc {
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -524,7 +588,7 @@
   width: 40%;
   height: 100%;
 }
-#line-banner .desc p {
+#line-banner .container-xxl .row .desc p {
   font-weight: 200;
 }
 
@@ -664,52 +728,60 @@
 }
 
 #notice {
-  height: 60vh;
+  height: 100vh;
+}
+#notice .operation {
+  position: relative;
   z-index: 2;
   background: url(../img/notice-bg.png) center center repeat;
   overflow: hidden;
 }
-#notice .imgs {
+#notice .operation .imgs {
   position: absolute;
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
 }
-#notice .imgs img {
+#notice .operation .imgs img {
   position: absolute;
-  opacity: 0.6;
+  opacity: 0.4;
   transform: translateY(0);
 }
-#notice .imgs img:nth-of-type(1) {
+#notice .operation .imgs img:nth-of-type(1) {
   width: 9%;
   left: 8%;
   top: -48%;
 }
-#notice .imgs img:nth-of-type(2) {
+#notice .operation .imgs img:nth-of-type(2) {
   width: 6%;
   right: 4%;
-  top: -10%;
+  top: -24%;
 }
-#notice .imgs img:nth-of-type(3) {
+#notice .operation .imgs img:nth-of-type(3) {
   width: 10%;
   left: 21%;
   top: 44%;
 }
-#notice .imgs img:nth-of-type(4) {
-  width: 11%;
+#notice .operation .imgs img:nth-of-type(4) {
+  width: 12%;
   right: 14%;
-  top: 62%;
+  top: 36%;
 }
-#notice .imgs img:nth-of-type(5) {
+#notice .operation .imgs img:nth-of-type(5) {
   width: 6%;
   left: -1%;
   top: 41%;
 }
-#notice .row {
+#notice .operation .imgs img:nth-of-type(6) {
+  width: 11%;
+  right: 18%;
+  top: -84%;
+}
+#notice .operation .row {
   justify-content: center;
 }
-#notice .row .desc {
+#notice .operation .row .desc {
   position: relative;
   display: flex;
   align-items: center;
@@ -719,25 +791,25 @@
   box-sizing: border-box;
   z-index: 1;
 }
-#notice .row .desc h3 {
+#notice .operation .row .desc h3 {
   font-size: 2rem;
   color: #fff;
   margin-bottom: 0.5rem;
 }
-#notice .row .desc h3:last-of-type {
+#notice .operation .row .desc h3:last-of-type {
   margin-top: 5rem;
 }
-#notice .row .desc table td {
+#notice .operation .row .desc table td {
   font-size: 1.25rem;
   color: #fff;
 }
-#notice .row .desc p {
+#notice .operation .row .desc p {
   font-size: 1.25rem;
   color: #fff;
 }
-
-#map {
-  height: 40vh;
+#notice .map {
+  position: relative;
+  height: 50%;
   background: #e0e0e0;
   z-index: 2;
 }

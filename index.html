@@ -45,28 +45,8 @@
     />
     <link
       rel="apple-touch-icon"
-      sizes="76x76"
-      href="icon/apple-icon-76x76.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="114x114"
-      href="icon/apple-icon-114x114.png"
-    />
-    <link
-      rel="apple-touch-icon"
       sizes="120x120"
       href="icon/apple-icon-120x120.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="144x144"
-      href="icon/apple-icon-144x144.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="icon/apple-icon-152x152.png"
     />
     <link
       rel="apple-touch-icon"
@@ -76,8 +56,8 @@
     <link
       rel="icon"
       type="image/png"
-      sizes="192x192"
-      href="icon/android-icon-192x192.png"
+      sizes="16x16"
+      href="icon/favicon-16x16.png"
     />
     <link
       rel="icon"
@@ -91,12 +71,6 @@
       sizes="96x96"
       href="icon/favicon-96x96.png"
     />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="icon/favicon-16x16.png"
-    />
 
     <!--  Script  -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -104,8 +78,45 @@
     <script src="js/index.js"></script>
   </head>
   <body>
+    <!-- nav -->
+    <nav id="nav">
+      <ul>
+        <li>
+          <span class="menu-name">home</span>
+          <a href="#home" class="hidden">home</a>
+        </li>
+        <li>
+          <span class="menu-name">concept</span>
+          <a href="#concept" class="hidden">concept</a>
+        </li>
+        <li>
+          <span class="menu-name">location</span>
+          <a href="#location" class="hidden">location</a>
+        </li>
+        <li>
+          <span class="menu-name">menu</span>
+          <a href="#menu" class="hidden">menu</a>
+        </li>
+        <li>
+          <span class="menu-name">pictures</span>
+          <a href="#pictures" class="hidden">pictures</a>
+        </li>
+        <li>
+          <span class="menu-name">team</span>
+          <a href="#team" class="hidden">team</a>
+        </li>
+        <li>
+          <span class="menu-name">event</span>
+          <a href="#event" class="hidden">event</a>
+        </li>
+        <li>
+          <span class="menu-name">notice</span>
+          <a href="#notice" class="hidden">notice</a>
+        </li>
+      </ul>
+    </nav>
     <main>
-      <!-- section2 home -->
+      <!-- section1 home -->
       <section id="home" class="section">
         <div class="home-bg-wrap">
           <img src="./img/home_bg1.jpg" alt="bg" / > <img
@@ -364,8 +375,8 @@
           </div>
         </div>
       </section>
-      <!-- section5 line-bannerpictures -->
-      <section id="line-banner" class="section">
+      <!-- line-banner -->
+      <div id="line-banner">
         <div class="container-xxl">
           <div class="row">
             <div class="desc">
@@ -377,7 +388,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </div>
       <!-- section6 pictures -->
       <section id="pictures" class="section">
         <div class="swiper-container">
@@ -453,63 +464,67 @@
       </section>
       <!-- section9 notice-->
       <section id="notice" class="section">
-        <div class="imgs">
-          <img src="./img/notice-img1.png" alt="pumpkin image" />
-          <img src="./img/notice-img2.png" alt="Cherry tomato image" />
-          <img src="./img/notice-img3.png" alt="salary image" />
-          <img src="./img/notice-img4.png" alt="radish image" />
-          <img src="./img/notice-img5.png" alt="garlic image" />
-        </div>
-        <div class="container-xxl">
-          <div class="row">
-            <div class="desc">
-              <h3>OPENING HOURS</h3>
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Winter hours</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>Sunday to Wednesday</td>
-                    <td>9am - 8:30pm</td>
-                  </tr>
-                  <tr>
-                    <td>Thursday, Friday, Saturday</td>
-                    <td>9am - 0:30pm</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>Summer hours - 7/7</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>1rst June > 8th October</td>
-                    <td>9am - 12:30pm</td>
-                  </tr>
-                </tbody>
-              </table>
-              <h3>BOOKING CONTACT</h3>
-              <p>04 94 95 10 19</p>
+        <div class="operation">
+          <div class="imgs">
+            <img src="./img/notice-img1.png" alt="pumpkin image" />
+            <img src="./img/notice-img2.png" alt="Cherry tomato image" />
+            <img src="./img/notice-img3.png" alt="salary image" />
+            <img src="./img/notice-img4.png" alt="radish image" />
+            <img src="./img/notice-img5.png" alt="garlic image" />
+            <img src="./img/notice-img6.png" alt="fenouil image" />
+          </div>
+          <div class="container-xxl">
+            <div class="row">
+              <div class="desc">
+                <h3>OPENING HOURS</h3>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Winter hours</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Sunday to Wednesday</td>
+                      <td>9am - 8:30pm</td>
+                    </tr>
+                    <tr>
+                      <td>Thursday, Friday, Saturday</td>
+                      <td>9am - 0:30pm</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Summer hours - 7/7</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>1rst June > 8th October</td>
+                      <td>9am - 12:30pm</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h3>BOOKING CONTACT</h3>
+                <p>04 94 95 10 19</p>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-      <section id="map" class="section">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1240202.0913251804!2d7.392703307326379!3d52.618970010934426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b85cecbc007f53%3A0x138a2e4438b5e65e!2sVona%20Grill!5e0!3m2!1sko!2skr!4v1672296221360!5m2!1sko!2skr"
-          width="100%"
-          height="100%"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1240202.0913251804!2d7.392703307326379!3d52.618970010934426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b85cecbc007f53%3A0x138a2e4438b5e65e!2sVona%20Grill!5e0!3m2!1sko!2skr!4v1672296221360!5m2!1sko!2skr"
+            width="100%"
+            height="100%"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
       </section>
     </main>
+    <!-- footer -->
     <footer>
       <div class="container-xxl">
         <div class="row">

@@ -1,15 +1,37 @@
 window.onload = function () {
-
+  const $section = $('.section');
   const home = document.querySelector('#home');
   const concept = document.querySelector('#concept');
   const place = document.querySelector('#location');
   const festival = document.querySelector('#event');
   const notice = document.querySelector('#notice');
 
+
   //scrollY value default
   setTimeout(function () {
     scrollTo(0, 0);
-  }, 100)
+  }, 100);
+  $('#nav li').eq(0).addClass('active');
+
+
+  //nav changes by scroll
+  const navChange = () => { 
+    let scrollY = window.scrollY;
+
+    //console.log(scrollY)
+
+    $.each($section, function (inx) { 
+      const targetInx = $section.eq(inx);
+      const targetTop = targetInx.offset().top;
+
+      //console.log(targetInx);
+
+      if (scrollY >= targetTop - 20) { 
+        $('#nav li').removeClass('active')
+        $('#nav li').eq(inx).addClass('active');
+      }
+    })
+  }
 
 
   // home txt, bg changes by scroll
@@ -139,6 +161,10 @@ window.onload = function () {
       festival.querySelector('.title').style.textShadow = '-60px 6px 10px rgba(0,0,0,.6)'
       festival.querySelector('p').style.textShadow = '-60px 6px 10px rgba(0,0,0,.6)'
     }
+    else { 
+      festival.querySelector('.title').style.textShadow = '0 0 0 rgba(0,0,0,0)'
+      festival.querySelector('p').style.textShadow = '0 0 0 rgba(0,0,0,0)'
+    }
   }
 
 
@@ -158,7 +184,6 @@ window.onload = function () {
   }
   
 
-
   //home mouse event
   $('#home').on('mousemove', function (e) {
     let mouseX = e.pageX;
@@ -174,7 +199,9 @@ window.onload = function () {
 
 
   //scroll event
-  $(document).on('scroll, mousewheel touch', function () {
+  $(window).on('scroll wheel touch', function () {
+    navChange();
+
     conceptBg.forEach((ele) => {
       conceptScrollPrx.observe(ele);
     });
@@ -183,8 +210,5 @@ window.onload = function () {
     umbrellaPrx();
     festivalPrx();
     noticePrx();
-    
-
   });
 };
-
