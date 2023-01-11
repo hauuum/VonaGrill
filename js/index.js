@@ -1,11 +1,10 @@
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", function(){
   const $section = $('.section');
   const home = document.querySelector('#home');
   const concept = document.querySelector('#concept');
   const place = document.querySelector('#location');
   const festival = document.querySelector('#event');
   const notice = document.querySelector('#notice');
-
 
   //scrollY value default
   setTimeout(function () {
@@ -17,8 +16,6 @@ window.onload = function () {
   //nav changes by scroll
   const navChange = () => { 
     let scrollY = window.scrollY;
-
-    //console.log(scrollY)
 
     $.each($section, function (inx) { 
       const targetInx = $section.eq(inx);
@@ -32,7 +29,7 @@ window.onload = function () {
       }
     })
   }
-
+  
 
   // home txt, bg changes by scroll
   const homeScrollPrx = new IntersectionObserver((entries) => {
@@ -211,4 +208,4 @@ window.onload = function () {
     festivalPrx();
     noticePrx();
   });
-};
+});
