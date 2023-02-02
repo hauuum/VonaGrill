@@ -76,14 +76,13 @@ document.addEventListener("DOMContentLoaded", function(){
     speed: 2000,
     parallax: true,
     grabCursor: true,
-    loop: true,
     keyboard: {
       enabled: true,
     },
-    autoplay: {
-      delay: 1000,
-      disableOnInteraction: false,
-    },
+    // autoplay: {
+    //   delay: 1000,
+    //   disableOnInteraction: false,
+    // },
   });
 
   const conceptScrollPrx = new IntersectionObserver((entries) => {
@@ -206,6 +205,7 @@ document.addEventListener("DOMContentLoaded", function(){
     slidesPerView: 1,
     loop: false,
     speed: 600,
+    loop: true,
     autoplay: {
       delay: 2000,
       disableOnInteraction: false,
@@ -284,8 +284,8 @@ document.addEventListener("DOMContentLoaded", function(){
     noticePrx();
   });
 
-
-
+  
+  //footer input control
   const footerInput = footer.querySelector('input');
   const footerButton = footer.querySelector('button');
 
@@ -321,31 +321,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }
       }
     });
-
-
-
-    
-    
-
-
-
-
-
-    // if(inputValue) {
-    //   if(confirm("다음의 이메일 주소로 이벤트, 행사 정보를 받아보시겠습니까?" + `\n` + inputValue)){
-    //     footerInput.value = "";
-    //   }
-    // }
-    // else return;
   }
-
-  
-
-  //footer input control
-  
   footerInput.addEventListener('input', inputChange);
   footerButton.addEventListener('click', btnClick);
-
-
-
 });

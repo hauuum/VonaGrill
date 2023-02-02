@@ -374,7 +374,7 @@
   top: 0;
   width: 100%;
   background: #7AA6AC;
-  padding: 1rem 0 0.5rem;
+  padding: 3rem 0 0.5rem;
   box-sizing: border-box;
 }
 #location .bg-wrap:nth-of-type(3) .garden-line-bg::before {
