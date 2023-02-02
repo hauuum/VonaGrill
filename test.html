@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            }
+            .section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align:center;
+            font-size: 3em;
+            border: 1px solid red;
+            box-sizing: border-box;
+            height: 100vh;
+            }
+
+            .destroy {
+            height: 2000vh;
+            background: #000;
+            }
+    </style>
+</head>
+<body>
+    <div id="fullpage">
+        <div class="section">One</div>
+        <div class="section">Two</div>
+        <div class="section">Three</div>
+        <div class="section">Four</div>
+    </div>
+    <div class="destroy">dddddd</div>
+
+
+    <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script>
+        //const section = document.querySelector('#fullpage');
+        let page = 1
+        const pageInx = $('.section').length;
+
+        $('#fullpage').on("wheel scroll touch", (e) => {
+        let delta = 0;
+        if($('html').is(":animated")) return;
+        
+        if(e.wheelDelta) {
+            delta = e.wheelDelta/120;
+        }
+        
+        if(e.originalEvent.deltaY > 0){
+            if(page == pageInx) return;
+            page++;
+        }
+        else if(e.originalEvent.deltaY < 0){
+                if(page == 1) return;
+                page--;
+            }
+            let scrollY = (page-1) * $('.section').height();
+            $('html').animate({scrollTop : scrollY});
+        })
+
+
+
+
+        //밑에 destroy 부분에서 -delta값을 했을때 다시 원페이지로 하면 될듯
+        //concept이랑 location 하나로 묶어서 합쳐주기
+
+
+
+
+    </script>
+</body>
+</html>

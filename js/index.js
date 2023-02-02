@@ -3,15 +3,16 @@ document.addEventListener("DOMContentLoaded", function(){
   const home = document.querySelector('#home');
   const concept = document.querySelector('#concept');
   const place = document.querySelector('#location');
+  const team = document.querySelector('#team');
   const festival = document.querySelector('#event');
   const notice = document.querySelector('#notice');
+  const footer = document.querySelector('footer');
 
   //scrollY value default
   setTimeout(function () {
     scrollTo(0, 0);
   }, 100);
   $('#nav li').eq(0).addClass('active');
-
 
   //nav changes by scroll
   const navChange = () => { 
@@ -21,40 +22,70 @@ document.addEventListener("DOMContentLoaded", function(){
       const targetInx = $section.eq(inx);
       const targetTop = targetInx.offset().top;
 
-      //console.log(targetInx);
-
       if (scrollY >= targetTop - 20) { 
         $('#nav li').removeClass('active')
         $('#nav li').eq(inx).addClass('active');
       }
     })
   }
-  
 
-  // home txt, bg changes by scroll
-  const homeScrollPrx = new IntersectionObserver((entries) => {
-    const homeTxt = $('.home-txt')
-    const homeH1 = $('.home-top h1');
-    const homeP = $('.home-top p')
+  //home mouse event
+  $('#home').on('mousemove', function (e) {
+    let mouseX = e.pageX;
+    let mouseY = e.pageY;
 
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        homeTxt.css({ 'background-color': 'rgba(0,0,0,0.8)' });
-        homeH1.css({ 'opacity': 0 });
-        homeP.css({ 'opacity': 0 });
-      }
-      else {
-        homeTxt.css({ 'background-color': 'rgba(0,0,0,0)' });
-        homeH1.css({ 'opacity': 1 });
-        homeP.css({ 'opacity': 1 });
-      }
+    $('.home-behind').css({
+      'transform': 'scale(1.3) translate(' + mouseX * -0.005 + 'px , ' + mouseY * -0.005 + 'px)'
+    });
+    $('.home-lamp').css({
+      'transform': 'scale(1.2) translate(' + mouseX * 0.01 + 'px , ' + mouseY * 0.01 + 'px)'
     });
   });
-  const homeBtm = home.querySelector('.home-btm .desc');
-  homeScrollPrx.observe(homeBtm);
 
+  // home txt, bg changes by scroll
+  const homeMainScrollPrx = () => {
+    const homeBottom = home.querySelector('.home-btm').getBoundingClientRect().y;
+    const homeBottomY = Math.floor(homeBottom) * 0.001;
+    const homeTxt = $('.home-txt')
+    const homeH1 = $('.home-top h1');
+    const homeP = $('.home-top p');
+    const homeDesc = $('.home-btm p');
+
+    let valueY = 1 - homeBottomY;
+
+    if (homeBottomY > 0.6 ) {
+      homeTxt.css({ 'background-color': 'rgba(0,0,0,0)'});
+      homeDesc.css({ 'opacity': 0 });
+      homeH1.css({ 'opacity': 1 });
+      homeP.css({ 'opacity': 1 });
+    } 
+    else if (homeBottomY <= 0.6){
+      if (homeBottomY <= 0.2){
+        valueY = 0.7;
+      }
+      homeTxt.css({ 'background-color': 'rgba(0,0,0, ' + valueY + ')' });
+      homeDesc.css({ 'opacity': valueY + 0.2});
+      homeH1.css({ 'opacity': homeBottomY });
+      homeP.css({ 'opacity':  homeBottomY });
+    }
+  }
 
   // concept imgs animation effect by scroll
+  const swiper1 = new Swiper('#concept .swiper-container', {
+    slidesPerView: 1,
+    speed: 2000,
+    parallax: true,
+    grabCursor: true,
+    loop: true,
+    keyboard: {
+      enabled: true,
+    },
+    autoplay: {
+      delay: 1000,
+      disableOnInteraction: false,
+    },
+  });
+
   const conceptScrollPrx = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -79,43 +110,62 @@ document.addEventListener("DOMContentLoaded", function(){
   });
 
 
-  //location lamp imgs move by scroll
   const lampScrollPrx = () => {
     const lamp = $('.lamp');
     const bg1Desc = $('.bg1 .desc');
     const bgHeight = place.querySelector('.bg1').clientHeight;
     const lampScrollY = Math.round(place.getBoundingClientRect().y);
-    const total = bgHeight - (lampScrollY / 1.3)
-    
+    let total;
+
     if (lampScrollY < bgHeight / 2) {
-      lamp.css({
-        'transform': 'translate(-50%, -' + total + 'px)'
-      });
-      bg1Desc.css({
-        'opacity': 1 - (lampScrollY / 100)
-      })
+      total = Math.abs(lampScrollY * 0.01);
+      bg1Desc.css({ 'opacity': 0 });
+
+      if ( lampScrollY <= 0 ){
+        total = Math.abs(lampScrollY * 0.12);
+        bg1Desc.css({ 'opacity': 1 });
+      }
+      lamp.css({ 'transform': 'translate(-50%, -' + total + '%)'});
     }
   }
-
 
   // location umbrella imgs move by scroll
-  const umbrellaPrx = () => {
-    const bg3 = place.querySelector('.bg3');
-    const bg3Height = bg3.clientHeight;
-    const bg3Scroll = bg3.getBoundingClientRect().y;
-
-    if (bg3Scroll < bg3Height - bg3Height / 4) {
-      bg3.querySelectorAll('.umbrella').forEach((ele) => {
-        ele.classList.add('active');
-      })
-    }
-    else if (bg3Scroll > bg3Height) {
-      bg3.querySelectorAll('.umbrella').forEach((ele) => {
-        ele.classList.remove('active');
-      })
-    }
+  let locationOptions = {
+    threshold: 0.4
   }
+  const livingRoomView = (entries) => {
+    entries.forEach(entry => {
+      if(entry.intersectionRatio >= 0.4) {
+        entry.target.classList.add('view')
+      }
+      else {
+        entry.target.classList.remove('view')
+      }
+    })
+  }
+  const livingRoomObserver = new IntersectionObserver(livingRoomView, locationOptions);
+  const livingRoom = place.querySelector('.bg2');
+  livingRoomObserver.observe(livingRoom);
 
+  const umbrellaPrx = (entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        place.querySelector('.bg3').querySelectorAll('.umbrella').forEach((ele) => {
+          ele.classList.add('active');
+        })
+        entry.target.classList.add('view');
+      }
+      else {
+        place.querySelector('.bg3').querySelectorAll('.umbrella').forEach((ele) => {
+          ele.classList.remove('active');
+        })
+        entry.target.classList.remove('view');
+      }
+    })
+  } 
+  const unbrellaObserver = new IntersectionObserver(umbrellaPrx);
+  const unbrella = place.querySelector('.bg3');
+  unbrellaObserver.observe(unbrella);
 
   // Menu shows by scroll
   const menuPrx = new IntersectionObserver((entries) => {
@@ -130,21 +180,62 @@ document.addEventListener("DOMContentLoaded", function(){
   });
   const menuList = document.querySelectorAll('.menu-wrap > li');
   menuList.forEach((ele) => menuPrx.observe(ele));
+
+
+  //line banner animation by scroll
+  let linaBannerOption = {
+    threshold: 0.5
+  }
+  const lineBannerPrx = (entries) => {
+    entries.forEach(entry => {
+      if(entry.intersectionRatio >= 0.5) {
+        entry.target.classList.add('view')
+      }
+      else {
+        entry.target.classList.remove('view')
+      }
+    })
+  }
+  const lineBannerObserver = new IntersectionObserver(lineBannerPrx, linaBannerOption);
+  const lineBanner = document.querySelector('#line-banner');
+  lineBannerObserver.observe(lineBanner);
   
 
   //pictures swiper effect
-  const swiper = new Swiper('.swiper-container', {
+  const swiper2 = new Swiper('#pictures .swiper-container', {
     slidesPerView: 1,
-    loop: true,
+    loop: false,
     speed: 600,
     autoplay: {
-      delay: 3000,
+      delay: 2000,
+      disableOnInteraction: false,
+    },
+    grabCursor: true,
+    keyboard: {
+      enabled: true,
     },
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
   });
+
+  // team moves by scroll
+  const teamPrx = () => {
+    const teamImg = team.querySelectorAll('img');
+    let teamScrollY = Math.round(team.getBoundingClientRect().y);
+
+    if( teamScrollY <= 0 ) {
+      teamScrollY = 0;
+      teamImg.forEach((ele, inx) => {
+        ele.style.transform = 'translateY(0)';
+        ele.style.transitionDuration = 0.2 * inx + 's'; 
+      })
+    }
+    teamImg.forEach((ele, inx) => {
+      ele.style.transform = 'translateY(' + teamScrollY + 'px)';
+    })
+  }
 
 
   // event mic moves by scroll
@@ -164,7 +255,6 @@ document.addEventListener("DOMContentLoaded", function(){
     }
   }
 
-
   // notice imgs move by scroll  
   const noticePrx = () => {
     const noticeScroll = notice.getBoundingClientRect().y;
@@ -173,28 +263,12 @@ document.addEventListener("DOMContentLoaded", function(){
     const totalY = noticeScroll / 2;
 
     if (noticeScroll <= noticeHeight) {
-      imgs.forEach((ele, inx) => {
+      imgs.forEach((ele) => {
         ele.style.transform = 'translateY(' + totalY + 'px)'
-        ele.style.transition = inx * 0.2 + 's'
       })
     }
   }
   
-
-  //home mouse event
-  $('#home').on('mousemove', function (e) {
-    let mouseX = e.pageX;
-    let mouseY = e.pageY;
-
-    $('.home-behind').css({
-      'transform': 'scale(1.3) translate(-' + mouseX / 50 + 'px , -' + mouseY / 50 + 'px)'
-    });
-    $('.home-lamp').css({
-      'transform': 'scale(1.2) translate(-' + mouseX / 25 + 'px , -' + mouseY / 20 + 'px)'
-    });
-  });
-
-
   //scroll event
   $(window).on('scroll wheel touch', function () {
     navChange();
@@ -203,9 +277,75 @@ document.addEventListener("DOMContentLoaded", function(){
       conceptScrollPrx.observe(ele);
     });
 
+    homeMainScrollPrx();
     lampScrollPrx();
-    umbrellaPrx();
+    teamPrx();
     festivalPrx();
     noticePrx();
   });
+
+
+
+  const footerInput = footer.querySelector('input');
+  const footerButton = footer.querySelector('button');
+
+  let inputValue;
+  const inputChange = (e) => {
+    let value = e.target.value;
+
+    if (value != undefined){
+      inputValue = value;
+      return inputValue;
+    }
+    else return;
+  }
+
+  const btnClick = (e) => {
+    e.preventDefault();
+    let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+    let testEmail = [inputValue];
+
+    testEmail.forEach((address) => {
+      let result = regex.test(address);
+
+      if (!result){
+        alert("이메일 주소를 다시 확인해주세요.")
+      }
+      else {
+        if(confirm("다음의 이메일 주소로 이벤트, 행사 정보를 받아보시겠습니까?" + `\n` + inputValue)) {
+          if(true) {
+            alert("신청해주셔서 감사합니다.")
+            footerInput.value = "";
+          }
+          else return;
+        }
+      }
+    });
+
+
+
+    
+    
+
+
+
+
+
+    // if(inputValue) {
+    //   if(confirm("다음의 이메일 주소로 이벤트, 행사 정보를 받아보시겠습니까?" + `\n` + inputValue)){
+    //     footerInput.value = "";
+    //   }
+    // }
+    // else return;
+  }
+
+  
+
+  //footer input control
+  
+  footerInput.addEventListener('input', inputChange);
+  footerButton.addEventListener('click', btnClick);
+
+
+
 });
